@@ -12,8 +12,17 @@ body {
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  gap: 1em;
   background-color: rgb(80, 80, 80);
   font-family: "Roboto", serif;
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  place-items: center;
+  gap: 1em;
+  width: 80%;
 }
 
 .container {
@@ -40,10 +49,32 @@ body {
   width: 100px;
   height: 100px;
   border-radius: .3em;
+  background-size: cover;
   background-position: center;
   cursor: pointer;
 }
 
 .image-span {
   text-wrap: wrap;
+}
+
+.img-btn {
+  border: 2px solid transparent;
+  font-weight: 700;
+  border-radius: .3em;
+  padding: .6em .8em;
+  cursor: pointer;
+}
+
+.img-btn-styles {
+  background-color: rgb(125, 125, 145);
+  color: rgb(56, 56, 66);
+  box-shadow: 0 0 6px #0000003d;
+  border-color: rgb(56, 56, 66);
+}
+
+.img-btn-styles:disabled {
+  background-color: rgb(156, 156, 156);
+  color: rgb(98, 98, 98);
+  border-color: rgb(156, 156, 156);
 }

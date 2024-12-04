@@ -36,6 +36,15 @@ const setSpanText = ({ span, text }) => {
   span.textContent = text;
 }
 
+export const pickRandomItem = ({ arr }) => {
+  if (!Array.isArray(arr)) {
+    throw new Error("arr must be an array");
+  }
+
+  const randomNum = Math.floor(Math.random() * arr.length);
+  return arr[randomNum];
+}
+
 //devuelve la funcion que cambia a la imagen que cambia al color, y el valor que decide cual usar.
 //imageHolder: "div que holdea la imagen", img: "imagen en si", name: "nombre de la imagen"
 export const toggleImage = () => {
@@ -65,5 +74,31 @@ export const toggleImage = () => {
     setColorFigure,
     setImageFigure,
     toggleHasBeenClicked,
+  };
+}
+//crea el componente imageCard, retorna el container de la imagen y span, el span y la imagen.
+export const createImageCard = ({ imageUrl, title }) => {
+  // Crear el contenedor principal
+  const container = document.createElement("div");
+  container.classList.add("container", "container-styles");
+
+  // Crear el div que simula la imagen
+  const imageDiv = document.createElement("div");
+  imageDiv.classList.add("img", "img-styles");
+  imageDiv.style.backgroundImage = `url('${imageUrl}')`;
+  
+  // Crear el span para el título
+  const titleSpan = document.createElement("span");
+  titleSpan.classList.add("image-span");
+  titleSpan.textContent = title;
+
+  // Agregar el div de imagen y el span al contenedor
+  container.appendChild(imageDiv);
+  container.appendChild(titleSpan);
+
+  return {
+    container, 
+    imageHolder: imageDiv,
+    span: titleSpan
   };
 }

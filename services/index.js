@@ -20,9 +20,11 @@ export const getCatImage = async ({ URL, API_KEY }) => {
   return mapped[0];
 }
 
-export const loadImages = async () => {
+export const loadImage = async ({ query }) => {
   const { CAT_URL, API_KEY } = await loadJSON({ jsonFile: "../data/data.json" });
-  const data = await getCatImage({ URL: CAT_URL, API_KEY });
+  //se genera una url a partir de el query.
+  const GENERATED_URL = `${CAT_URL}${query}`;
+  const data = await getCatImage({ URL: GENERATED_URL, API_KEY });
   const { img, name } = data;
 
   return { img, name };
